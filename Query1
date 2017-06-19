@@ -1,0 +1,9 @@
+Select outq.*, incq.inc from
+(Select point, date, sum(out) as out from outcome group by date, point) as outq
+Left join
+(Select point, date, sum(inc) as inc from income group by date, point) as incq on outq.point=incq.point and outq.date=incq.date
+Union
+Select incq.point, incq.date, outq.out, incq.inc from
+(Select point, date, sum(out) as out from outcome group by date, point) as outq 
+right join
+(Select point, date, sum(inc) as inc from income group by date, point) as incq on outq.point=incq.point and outq.date=incq.date
