@@ -1,0 +1,4 @@
+Select avg(lap.price) from
+(Select p.model, price from pc join product as p on p.model=pc.model and p.maker='A'
+Union all
+Select p.model, price from laptop as l join product as p on p.model=l.model and p.maker='A') as lap
