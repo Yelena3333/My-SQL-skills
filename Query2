@@ -1,0 +1,2 @@
+Select maker, count(model) from product where type='PC' group by maker
+Having count(model)>=3
