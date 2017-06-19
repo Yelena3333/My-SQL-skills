@@ -1,0 +1,8 @@
+With ste as(
+Select distinct model, price from pc
+Union
+Select distinct model, price from laptop
+Union
+Select distinct model, price from printer)
+Select model from ste where price in (
+Select max(price) from ste)
